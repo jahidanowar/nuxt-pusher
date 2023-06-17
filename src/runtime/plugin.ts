@@ -7,4 +7,6 @@ export default defineNuxtPlugin(() => {
       pusher: usePusher(),
     },
   };
+
+  // hdbfhdb
 });
