@@ -1,6 +1,6 @@
 {
-  "name": "nuxt-pusher",
-  "version": "0.0.2",
+  "name": "nuxt-pusher-test",
+  "version": "0.0.1",
   "description": "Pusher module for Nuxt.js",
   "repository": "https://github.com/jahidanowar/nuxt-pusher",
   "license": "MIT",
