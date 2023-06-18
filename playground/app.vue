@@ -3,12 +3,13 @@
 </template>
 
 <script setup>
-import { useNuxtApp } from "#app";
 import { onMounted } from "vue";
 
+const { $pusher } = useNuxtApp();
+
 onMounted(() => {
-  const { $pusher } = useNuxtApp();
-  const myChannel = $pusher.subscribe("my-channel");
+  const pusher = $pusher.getInstance();
+  const myChannel = pusher.subscribe("my-channel");
   myChannel.bind("my-event", function (data) {
     alert(JSON.stringify(data));
   });

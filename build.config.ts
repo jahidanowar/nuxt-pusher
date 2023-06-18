@@ -1,6 +1,13 @@
 import { defineBuildConfig } from "unbuild";
 
+import pkg from "./package.json";
+
+const externals = [...Object.keys(pkg.dependencies || {})];
+
 export default defineBuildConfig({
   failOnWarn: false,
-  externals: ["pusher", "pusher-js"],
+  clean: true,
+  declaration: true,
+  externals,
+  outDir: "dist",
 });
