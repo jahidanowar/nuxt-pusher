@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.1.5
+
+[compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v0.1.4...v0.1.5)
+
+
+### 🚀 Enhancements
+
+  - GeInstance method exposes the Pusher instance ([5828d12](https://github.com/jahidanowar/nuxt-pusher/commit/5828d12))
+
+### ❤️  Contributors
+
+- Jahidanowar <milon5143@gmail.com>
+
 ## v0.1.4
 
 [compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v1.0.4...v0.1.4)
