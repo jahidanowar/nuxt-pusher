@@ -3,40 +3,8 @@
 </template>
 
 <script setup>
-import { onMounted } from "./.nuxt/imports";
-
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
-// Hello
+import { useNuxtApp } from "#app";
+import { onMounted } from "vue";
 
 onMounted(() => {
   const { $pusher } = useNuxtApp();

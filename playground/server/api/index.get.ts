@@ -1,5 +1,4 @@
-//@ts-ignore
-import { serverPusher } from "#nuxt-pusher";
+import { serverPusher } from "#nuxt/pusher";
 
 export default eventHandler(() => {
   const pusher = serverPusher();

@@ -4,6 +4,7 @@ import {
   createResolver,
   addTemplate,
   addImports,
+  logger,
 } from "@nuxt/kit";
 import { defu } from "defu";
 
@@ -39,6 +40,34 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url);
 
+    if (!options.appId || options.appId === "") {
+      logger.warn(
+        "Pusher App ID not found. Please set the PUSHER_APP_ID environment variable."
+      );
+      return;
+    }
+
+    if (!options.key || options.key === "") {
+      logger.warn(
+        "Pusher Key not found. Please set the PUSHER_KEY environment variable."
+      );
+      return;
+    }
+
+    if (!options.secret || options.secret === "") {
+      logger.warn(
+        "Pusher Secret not found. Please set the PUSHER_SECRET environment variable."
+      );
+      return;
+    }
+
+    if (!options.cluster || options.cluster === "") {
+      logger.warn(
+        "Pusher Cluster not found. Please set the PUSHER_CLUSTER environment variable."
+      );
+      return;
+    }
+
     // Expose runtime public config
     nuxt.options.runtimeConfig.public = defu(
       nuxt.options.runtimeConfig.public,
@@ -57,7 +86,7 @@ export default defineNuxtModule<ModuleOptions>({
       }
     );
 
-    // Serverside Helpers
+    // Nitro Auto import Serverside Helpers
     nuxt.hook("nitro:config", (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {};
 
@@ -68,26 +97,35 @@ export default defineNuxtModule<ModuleOptions>({
           inline: [resolver.resolve("./runtime")],
         }
       );
-      nitroConfig.alias["#nuxt-pusher"] = resolver.resolve(
+      nitroConfig.alias["#nuxt/pusher"] = resolver.resolve(
         "./runtime/server/services"
       );
     });
 
+    // Create vierual types
     addTemplate({
       filename: "./types/nuxt-pusher.d.ts",
       getContents: () =>
-        `declare module "#nuxt-pusher" {
-        const serverPusher: typeof import(${resolver.resolve(
+        `declare module "#nuxt/pusher" {
+        const serverPusher: typeof import("${resolver.resolve(
           "./runtime/server/services"
-        )}).serverPusher;
+        )}").serverPusher;
       }`,
     });
+
+    nuxt.hook("prepare:types", (options) => {
+      options.references.push({
+        path: resolver.resolve(nuxt.options.buildDir, "types/nuxt-pusher.d.ts"),
+      });
+    });
+
     // Client Composable
     addImports({
       name: "usePusher",
       as: "usePusher",
       from: resolver.resolve("./runtime/composables/usePusher"),
     });
+
     // Client Plugin
     addPlugin({
       mode: "client",
