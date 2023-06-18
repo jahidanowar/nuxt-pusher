@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v0.1.5...v0.0.2)
+
+
+### 🩹 Fixes
+
+  - External Deps Added ([9c785c6](https://github.com/jahidanowar/nuxt-pusher/commit/9c785c6))
+
+### ❤️  Contributors
+
+- Jahidanowar <milon5143@gmail.com>
+
 ## v0.1.5
 
 [compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v0.1.4...v0.1.5)
