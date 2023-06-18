@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.1.4
+
+[compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v1.0.4...v0.1.4)
+
+
+### 🏡 Chore
+
+  - **release:** V1.0.4 ([5bf839d](https://github.com/jahidanowar/nuxt-pusher/commit/5bf839d))
+
+### ❤️  Contributors
+
+- Jahidanowar <milon5143@gmail.com>
+
 ## v1.0.4
 
 [compare changes](https://github.com/jahidanowar/nuxt-pusher/compare/v1.0.3...v1.0.4)
